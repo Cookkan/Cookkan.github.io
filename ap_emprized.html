@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <link rel = "stylesheet" href = "apply.css">
+    </head>
+    <body>
+        <header class = "top-header">
+            <a class = "menu-item brand" href = "home.html">EMQUAL</a>
+            <a class = "menu-item" href = "info.html">Who are we</a>
+            <a class = "menu-item" href = "index.html">Company</a>
+        </header>
+        <div class = "box">
+            <img class = "image" src = "logo_emprized.jpg">
+            <h1>Emprized</h1>
+            <h3>Accountant</h3>
+            <p>This form wil directly send you to your email, you just have to add the job position in the subject and click send.</p>
+            <form method="GET" action="mailto:cookiedanchaivijitr@gmail.com" enctype="text/plain">
+                <div>Initials</div>
+                <input type="text" name="initial" />
+            
+                <div>Email</div>
+                <input name="email" />
+            
+                <div>Years of Experience</div>
+                <input name="yr of exp" />
+            
+                <div>Resume</div>
+                <textarea name="resume"></textarea>
+            
+                <br><br>
+                <input type="submit" value="Send" />
+            
+                <input type="hidden" name="body" />
+            </form>
+            
+            <script>
+               var form = document.getElementsByTagName('form')[0];
+               form.addEventListener('submit',contact,false);
+               function contact(e) {
+                  e.preventDefault();
+            
+                  var target = e.target || e.srcElement;
+                  var i = 0;
+                  var message = '';
+            
+                  for(i = 0; i < target.length; ++i) {
+                     if(target[i].type != 'text' && target[i].type != 'textarea') {
+                        continue;
+                     }
+            
+                     message += target[i].name + ': ' + target[i].value + "\r\n";
+                  }
+
+                  target.elements["body"].value = message;
+            
+                  this.submit();
+               }
+            </script>
+        </div>
+    </body>
+</html>
